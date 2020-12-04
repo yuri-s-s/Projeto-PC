@@ -26,7 +26,7 @@ public class Barco {
 		}
 
 		this.totalAlunos++;
-		
+
 		if (this.totalAlunos == this.capacidade) {
 
 			System.out.println("Capacidade máxima atingida. Algum aluno pode remar");
