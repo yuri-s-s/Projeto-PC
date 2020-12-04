@@ -3,10 +3,12 @@ package Q2;
 public class AlunoUEPB implements Runnable {
 
 	private Barco barco;
-		
-	public AlunoUEPB(Barco barco) {
+	private String aluno;
+	
+	public AlunoUEPB(Barco barco, String aluno) {
 		super();
 		this.barco = barco;
+		this.aluno = aluno;
 	}
 	
 	@Override
@@ -15,7 +17,11 @@ public class AlunoUEPB implements Runnable {
 			
 			while(true) {
 				
-				this.embarcar();
+				boolean podeRemar = this.embarcar();
+				
+				if(podeRemar) {
+					this.rema();
+				}
 				
 			}
 			
@@ -25,8 +31,11 @@ public class AlunoUEPB implements Runnable {
 		
 	}
 	
-	public void embarcar() throws InterruptedException {
-		this.barco.embarcarUEPB();
+	public boolean embarcar() throws InterruptedException {
+		return this.barco.embarcarUEPB(aluno);
 	}
 	
+	public void rema() throws InterruptedException {
+		 this.barco.rema("UEPB", aluno);
+	}
 }

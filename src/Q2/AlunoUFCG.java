@@ -3,10 +3,12 @@ package Q2;
 public class AlunoUFCG implements Runnable {
 	
 	private Barco barco;
-
-	public AlunoUFCG(Barco barco) {
+	private String aluno;
+	
+	public AlunoUFCG(Barco barco, String aluno) {
 		super();
 		this.barco = barco;
+		this.aluno = aluno;
 	}
 	
 	@Override
@@ -15,8 +17,12 @@ public class AlunoUFCG implements Runnable {
 			
 			while(true) {
 				
-				this.embarcar();
-
+				boolean podeRemar = this.embarcar();
+				
+				if(podeRemar) {
+					this.rema();
+				}
+				
 			}
 			
 		} catch (Exception e) {
@@ -25,9 +31,12 @@ public class AlunoUFCG implements Runnable {
 		
 	}
 	
-	public void embarcar() throws InterruptedException {
-		this.barco.embarcarUFCG();
+	public boolean embarcar() throws InterruptedException {
+		return this.barco.embarcarUFCG(aluno);
 	}
 	
+	public void rema() throws InterruptedException {
+		 this.barco.rema("UFCG", aluno);
+	}
 
 }

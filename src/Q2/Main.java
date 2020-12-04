@@ -9,23 +9,23 @@ public class Main {
 		
 		Barco b = new Barco();
 		
-		AlunoUEPB uepb1 = new AlunoUEPB(b);
-		AlunoUEPB uepb2 = new AlunoUEPB(b);
-		AlunoUEPB uepb3 = new AlunoUEPB(b);
-		AlunoUEPB uepb4 = new AlunoUEPB(b);
-		AlunoUEPB uepb5 = new AlunoUEPB(b);
-		AlunoUEPB uepb6 = new AlunoUEPB(b);
-		AlunoUEPB uepb7 = new AlunoUEPB(b);
-		AlunoUFCG ufcg1 = new AlunoUFCG(b);
-		AlunoUFCG ufcg2 = new AlunoUFCG(b);
-		AlunoUFCG ufcg3 = new AlunoUFCG(b);
-		AlunoUFCG ufcg4 = new AlunoUFCG(b);
-		AlunoUFCG ufcg5 = new AlunoUFCG(b);
-		AlunoUFCG ufcg6 = new AlunoUFCG(b);
-		AlunoUFCG ufcg7 = new AlunoUFCG(b);
+		AlunoUEPB uepb1 = new AlunoUEPB(b, "UEPB - 1");
+		AlunoUEPB uepb2 = new AlunoUEPB(b, "UEPB - 2");
+		AlunoUEPB uepb3 = new AlunoUEPB(b, "UEPB - 3");
+		AlunoUEPB uepb4 = new AlunoUEPB(b, "UEPB - 4");
+		AlunoUEPB uepb5 = new AlunoUEPB(b, "UEPB - 5");
+		AlunoUEPB uepb6 = new AlunoUEPB(b, "UEPB - 6");
+		AlunoUEPB uepb7 = new AlunoUEPB(b, "UEPB - 7");
+		AlunoUFCG ufcg1 = new AlunoUFCG(b, "UFCG - 1");
+		AlunoUFCG ufcg2 = new AlunoUFCG(b, "UFCG - 2");
+		AlunoUFCG ufcg3 = new AlunoUFCG(b, "UFCG - 3");
+		AlunoUFCG ufcg4 = new AlunoUFCG(b, "UFCG - 4");
+		AlunoUFCG ufcg5 = new AlunoUFCG(b, "UFCG - 5");
+		AlunoUFCG ufcg6 = new AlunoUFCG(b, "UFCG - 6");
+		AlunoUFCG ufcg7 = new AlunoUFCG(b, "UFCG - 7");
 		
 		
-		ExecutorService executor = Executors.newFixedThreadPool(25);
+		ExecutorService executor = Executors.newFixedThreadPool(14);
 
 		executor.execute(ufcg1);
 		executor.execute(uepb2);
