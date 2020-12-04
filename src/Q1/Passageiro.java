@@ -4,10 +4,13 @@ public class Passageiro implements Runnable {
 
 	private Buffer buffer;
 	
+	private String nomePassageiro;
 	
-	public Passageiro(Buffer buffer) {
+	
+	public Passageiro(Buffer buffer, String nomePassageiro) {
 		super();
 		this.buffer = buffer;
+		this.nomePassageiro = nomePassageiro;
 	}
 
 	@Override
@@ -29,12 +32,12 @@ public class Passageiro implements Runnable {
 
 	public void embarcar() throws InterruptedException {
 		
-		this.buffer.embarcar();
+		this.buffer.embarcar(nomePassageiro);
 	}
 	
 	public void desembarcar() throws InterruptedException {
 		
-		this.buffer.desembarcar();
+		this.buffer.desembarcar(nomePassageiro);
 		
 	}
 

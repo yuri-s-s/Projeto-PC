@@ -33,7 +33,7 @@ public class Buffer {
 		notifyAll();
 	}
 	
-	public synchronized void embarcar() throws InterruptedException {
+	public synchronized void embarcar(String nome) throws InterruptedException {
 
 		while(isFull() || !carregar) {
 			wait();
@@ -41,7 +41,7 @@ public class Buffer {
 		
 		this.valor ++;
 		
-		System.out.println("Um passageiro embarcou");
+		System.out.println("O passageiro " + nome + " embarcou.");
 		Thread.sleep(1000);
 		
 		notifyAll();
@@ -74,7 +74,7 @@ public class Buffer {
 		notifyAll();
 	}
 	
-	public synchronized void desembarcar() throws InterruptedException {
+	public synchronized void desembarcar(String nome) throws InterruptedException {
 
 		while(isEmpty() || !descarregar) {
 			wait();
@@ -82,7 +82,7 @@ public class Buffer {
 		
 		this.valor --;
 		
-		System.out.println("Um passageiro desembarcou");
+		System.out.println("O passageiro " + nome +  " desembarcou.");
 		Thread.sleep(1000);
 		
 		if(isEmpty()) {
