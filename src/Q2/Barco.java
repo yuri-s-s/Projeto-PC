@@ -9,6 +9,9 @@ package Q2;
  * 
  * Foram feitos dois embarcar separados, (embarcarUFCG, embarcarUEPB) porém eles
  * chamam o mesmo método embarcar.
+ * 
+ * Os sleeps foram colocados apenas para vizualizar os prints, não tendo impacto
+ * no andamento das threads
  */
 public class Barco {
 

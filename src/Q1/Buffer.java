@@ -10,7 +10,7 @@ package Q1;
  * saber que o carro ainda não foi carregado.
  * 
  * Os sleeps foram colocados apenas para vizualizar os prints, não tendo impacto
- * no andamento das threads
+ * no andamento das threads.
  */
 public class Buffer {
 
@@ -89,7 +89,6 @@ public class Buffer {
 		System.out.println("O carro está correndo, aperte os cintos");
 		Thread.sleep(5000);
 
-		notifyAll();
 	}
 
 	/*
