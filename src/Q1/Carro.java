@@ -1,5 +1,8 @@
 package Q1;
 
+/*
+ * Thread Carro que possui tres chamadas ao Buffer, (carregar, correr, descarregar)
+ */
 public class Carro implements  Runnable {
 	
 	private Buffer buffer;
