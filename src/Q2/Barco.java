@@ -19,7 +19,7 @@ public class Barco {
 		this.podeRemar = false;
 	}
 
-	public synchronized boolean embarcar() throws InterruptedException {
+	public synchronized boolean embarcar(String universidade, String aluno) throws InterruptedException {
 
 		while (this.totalAlunos == this.capacidade) {
 			wait();
@@ -32,10 +32,17 @@ public class Barco {
 			System.out.println("Capacidade máxima atingida. Algum aluno pode remar");
 			Thread.sleep(500);
 			this.podeRemar = true;
+			this.rema(universidade, aluno);
 		}
 		
 		return true;
 
+	}
+	
+	public synchronized void destinoFinal() throws InterruptedException {
+		while(true) {
+			wait();
+		}
 	}
 
 	public synchronized void rema( String universidade, String aluno) throws InterruptedException {
@@ -64,7 +71,7 @@ public class Barco {
 		notifyAll();
 	}
 
-	public synchronized boolean embarcarUFCG(String aluno) throws InterruptedException {
+	public synchronized void embarcarUFCG(String aluno) throws InterruptedException {
 		
 		while (!this.podeEmbarcarUFCG() || podeRemar) {
 			System.out.println("O aluno " +aluno + " da UFCG foi bloqueado");
@@ -76,10 +83,10 @@ public class Barco {
 		System.out.println("O aluno " + aluno + " da UFCG embarcou.");
 		Thread.sleep(1000);
 
-		return this.embarcar();
+		this.embarcar("UFCG", aluno);
 	}
 
-	public synchronized boolean embarcarUEPB(String aluno) throws InterruptedException {
+	public synchronized void embarcarUEPB(String aluno) throws InterruptedException {
 		
 		while (!this.podeEmbarcarUEPB() || podeRemar) {
 			System.out.println("O aluno " +aluno + " da UEPB foi bloqueado");
@@ -91,7 +98,7 @@ public class Barco {
 		System.out.println("O aluno " +aluno + " da UEPB embarcou.");
 		Thread.sleep(1000);
 
-		return this.embarcar();
+		this.embarcar("UEPB", aluno);
 	}
 
 	public synchronized boolean podeEmbarcarUFCG() {

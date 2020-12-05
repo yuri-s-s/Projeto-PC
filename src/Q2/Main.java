@@ -16,6 +16,7 @@ public class Main {
 		AlunoUEPB uepb5 = new AlunoUEPB(b, "UEPB - 5");
 		AlunoUEPB uepb6 = new AlunoUEPB(b, "UEPB - 6");
 		AlunoUEPB uepb7 = new AlunoUEPB(b, "UEPB - 7");
+		AlunoUEPB uepb8 = new AlunoUEPB(b, "UEPB - 8");
 		AlunoUFCG ufcg1 = new AlunoUFCG(b, "UFCG - 1");
 		AlunoUFCG ufcg2 = new AlunoUFCG(b, "UFCG - 2");
 		AlunoUFCG ufcg3 = new AlunoUFCG(b, "UFCG - 3");
@@ -23,9 +24,10 @@ public class Main {
 		AlunoUFCG ufcg5 = new AlunoUFCG(b, "UFCG - 5");
 		AlunoUFCG ufcg6 = new AlunoUFCG(b, "UFCG - 6");
 		AlunoUFCG ufcg7 = new AlunoUFCG(b, "UFCG - 7");
+		AlunoUFCG ufcg8 = new AlunoUFCG(b, "UFCG - 8");
 		
 		
-		ExecutorService executor = Executors.newFixedThreadPool(14);
+		ExecutorService executor = Executors.newFixedThreadPool(16);
 
 		executor.execute(ufcg1);
 		executor.execute(uepb2);
@@ -41,6 +43,9 @@ public class Main {
 		executor.execute(ufcg4);
 		executor.execute(uepb6);
 		executor.execute(ufcg7);
+		executor.execute(ufcg8);
+		executor.execute(uepb8);
+		
 		
 	}
 }

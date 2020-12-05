@@ -4,38 +4,36 @@ public class AlunoUEPB implements Runnable {
 
 	private Barco barco;
 	private String aluno;
-	
+
 	public AlunoUEPB(Barco barco, String aluno) {
 		super();
 		this.barco = barco;
 		this.aluno = aluno;
 	}
-	
+
 	@Override
 	public void run() {
 		try {
-			
-			while(true) {
-				
-				boolean podeRemar = this.embarcar();
-				
-				if(podeRemar) {
-					this.rema();
-				}
-				
+
+			while (true) {
+
+				this.embarcar();
+
+				this.destinoFinal();
 			}
-			
+
 		} catch (Exception e) {
 			System.out.println("ERRO");
 		}
-		
+
+	}
+
+	public void embarcar() throws InterruptedException {
+		this.barco.embarcarUEPB(aluno);
+	}
+
+	public void destinoFinal() throws InterruptedException {
+		this.barco.destinoFinal();
 	}
 	
-	public boolean embarcar() throws InterruptedException {
-		return this.barco.embarcarUEPB(aluno);
-	}
-	
-	public void rema() throws InterruptedException {
-		 this.barco.rema("UEPB", aluno);
-	}
 }
