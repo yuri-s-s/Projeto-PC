@@ -1,5 +1,15 @@
 package Q2;
 
+/*
+ * Nessa questão, o Barco seria o proprio buffer para controlar as threads dos
+ * alunos, O barco terá sempre a capacidade 4, e foram definidas as variaveis
+ * (alunosUEPB, alunosUFCG e totalAlunos) sempre começando em 0.
+ * 
+ * A variavel podeRemar, foi definida, para controlar a função rema.
+ * 
+ * Foram feitos dois embarcar separados, (embarcarUFCG, embarcarUEPB) porém eles
+ * chamam o mesmo método embarcar.
+ */
 public class Barco {
 
 	final private int capacidade = 4;
@@ -19,7 +29,12 @@ public class Barco {
 		this.podeRemar = false;
 	}
 
-	public synchronized boolean embarcar(String universidade, String aluno) throws InterruptedException {
+	/*
+	 * No embarcar, é onde é feita a adição de alunos no barco, além disso, esse
+	 * método é responsável de chamar o metodo rema, alocando sempre o ultimo aluno
+	 * para remar.
+	 */
+	public synchronized void embarcar(String universidade, String aluno) throws InterruptedException {
 
 		while (this.totalAlunos == this.capacidade) {
 			wait();
@@ -34,24 +49,21 @@ public class Barco {
 			this.podeRemar = true;
 			this.rema(universidade, aluno);
 		}
-		
-		return true;
 
 	}
-	
-	public synchronized void destinoFinal() throws InterruptedException {
-		while(true) {
-			wait();
-		}
-	}
 
-	public synchronized void rema( String universidade, String aluno) throws InterruptedException {
+	/*
+	 * No método rema, os outros métodos são travados, não sendo mais permitido que
+	 * um aluno entre no barco, é usado um sleep para simular que o barco ta
+	 * navegando, e apois isso, o barco volta para o estado inicial.
+	 */
+	public synchronized void rema(String universidade, String aluno) throws InterruptedException {
 
 		while (!this.podeRemar) {
 			wait();
 		}
 
-		System.out.println("O aluno " + aluno + " da Universidade " + universidade +  " começou a remar.");
+		System.out.println("O aluno " + aluno + " da Universidade " + universidade + " começou a remar.");
 
 		this.podeRemar = false;
 
@@ -71,10 +83,14 @@ public class Barco {
 		notifyAll();
 	}
 
+	/*
+	 * No embarcarUFCG, é checado se o aluno dessa universidade pode embarcar, caso
+	 * positivo, é chamado o metodo embarcar, inserindo o aluno no barco.
+	 */
 	public synchronized void embarcarUFCG(String aluno) throws InterruptedException {
-		
+
 		while (!this.podeEmbarcarUFCG() || podeRemar) {
-			System.out.println("O aluno " +aluno + " da UFCG foi bloqueado");
+			System.out.println("O aluno " + aluno + " da UFCG foi bloqueado");
 			wait();
 		}
 
@@ -86,16 +102,20 @@ public class Barco {
 		this.embarcar("UFCG", aluno);
 	}
 
+	/*
+	 * No embarcarUEPB, é checado se o aluno dessa universidade pode embarcar, caso
+	 * positivo, é chamado o metodo embarcar, inserindo o aluno no barco.
+	 */
 	public synchronized void embarcarUEPB(String aluno) throws InterruptedException {
-		
+
 		while (!this.podeEmbarcarUEPB() || podeRemar) {
-			System.out.println("O aluno " +aluno + " da UEPB foi bloqueado");
+			System.out.println("O aluno " + aluno + " da UEPB foi bloqueado");
 			wait();
 		}
 
 		this.alunosUEPB++;
 
-		System.out.println("O aluno " +aluno + " da UEPB embarcou.");
+		System.out.println("O aluno " + aluno + " da UEPB embarcou.");
 		Thread.sleep(1000);
 
 		this.embarcar("UEPB", aluno);

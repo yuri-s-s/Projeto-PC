@@ -1,5 +1,8 @@
 package Q2;
 
+/*
+ * Thread AlunoUEPB que possui uma chamada ao Barco (embarcarUEPB)
+ */
 public class AlunoUEPB implements Runnable {
 
 	private Barco barco;
@@ -15,12 +18,7 @@ public class AlunoUEPB implements Runnable {
 	public void run() {
 		try {
 
-			while (true) {
-
-				this.embarcar();
-
-				this.destinoFinal();
-			}
+			this.embarcar();
 
 		} catch (Exception e) {
 			System.out.println("ERRO");
@@ -32,8 +30,4 @@ public class AlunoUEPB implements Runnable {
 		this.barco.embarcarUEPB(aluno);
 	}
 
-	public void destinoFinal() throws InterruptedException {
-		this.barco.destinoFinal();
-	}
-	
 }

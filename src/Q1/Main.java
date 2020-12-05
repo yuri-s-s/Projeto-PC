@@ -9,7 +9,7 @@ public class Main {
 		
 		Buffer b = new Buffer();
 		
-		Carro c = new Carro(b, 4);
+		Carro c = new Carro(b, 5);
 		
 		Passageiro p1 = new Passageiro(b, "P1");
 		Passageiro p2 = new Passageiro(b, "P2");

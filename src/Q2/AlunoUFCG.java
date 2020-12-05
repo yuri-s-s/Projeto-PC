@@ -1,5 +1,8 @@
 package Q2;
 
+/*
+ * Thread AlunoUFCG que possui uma chamada ao Barco (embarcarUFCG)
+ */
 public class AlunoUFCG implements Runnable {
 
 	private Barco barco;
@@ -15,13 +18,7 @@ public class AlunoUFCG implements Runnable {
 	public void run() {
 		try {
 
-			while (true) {
-
-				this.embarcar();
-
-				this.destinoFinal();
-				
-			}
+			this.embarcar();
 
 		} catch (Exception e) {
 			System.out.println("ERRO");
@@ -31,10 +28,6 @@ public class AlunoUFCG implements Runnable {
 
 	public void embarcar() throws InterruptedException {
 		this.barco.embarcarUFCG(aluno);
-	}
-	
-	public void destinoFinal() throws InterruptedException {
-		this.barco.destinoFinal();
 	}
 
 }

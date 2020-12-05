@@ -98,7 +98,7 @@ public class Buffer {
 	 */
 	public synchronized void descarregar() throws InterruptedException {
 
-		while (isEmpty()) {
+		while (isEmpty() && c != 0) {
 			wait();
 		}
 
@@ -106,6 +106,10 @@ public class Buffer {
 		Thread.sleep(2000);
 
 		this.descarregar = true;
+		
+		if (isEmpty()) {
+			this.c = -1;
+		}
 
 		notifyAll();
 	}
