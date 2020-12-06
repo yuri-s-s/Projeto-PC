@@ -9,9 +9,6 @@ package Q2;
  * 
  * Foram feitos dois embarcar separados, (embarcarUFCG, embarcarUEPB) porém eles
  * chamam o mesmo método embarcar.
- * 
- * Os sleeps foram colocados apenas para vizualizar os prints, não tendo impacto
- * no andamento das threads
  */
 public class Barco {
 
@@ -48,7 +45,7 @@ public class Barco {
 		if (this.totalAlunos == this.capacidade) {
 
 			System.out.println("Capacidade máxima atingida. Algum aluno pode remar");
-			Thread.sleep(500);
+
 			this.podeRemar = true;
 			this.rema(universidade, aluno);
 		}
@@ -70,18 +67,14 @@ public class Barco {
 
 		this.podeRemar = false;
 
-		Thread.sleep(1000);
 		System.out.println("O barco está remando. BORA BORA.");
-		Thread.sleep(5000);
 		System.out.println("O barco chegou ao seu destino");
 
 		this.alunosUEPB = 0;
 		this.alunosUFCG = 0;
 		this.totalAlunos = 0;
 
-		Thread.sleep(1500);
 		System.out.println("O barco está pronto para uma nova viagem.");
-		Thread.sleep(1000);
 
 		notifyAll();
 	}
@@ -100,7 +93,6 @@ public class Barco {
 		this.alunosUFCG++;
 
 		System.out.println("O aluno " + aluno + " da UFCG embarcou.");
-		Thread.sleep(1000);
 
 		this.embarcar("UFCG", aluno);
 	}
@@ -119,7 +111,6 @@ public class Barco {
 		this.alunosUEPB++;
 
 		System.out.println("O aluno " + aluno + " da UEPB embarcou.");
-		Thread.sleep(1000);
 
 		this.embarcar("UEPB", aluno);
 	}

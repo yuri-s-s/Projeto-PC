@@ -1,5 +1,5 @@
 #!/bin/bash
 
-javac Q3/*.java
+javac --release 8 Q3/*.java
 
 java Q3/Main

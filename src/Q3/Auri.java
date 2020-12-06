@@ -2,9 +2,6 @@ package Q3;
 
 /*
  * Nesta questão, Utilizei o Auri como buffer para controlar a thread Aluno.
- * 
- * Os sleeps foram colocados apenas para vizualizar os prints, não tendo impacto
- * no andamento das threads.
  */
 public class Auri {
 
@@ -27,8 +24,6 @@ public class Auri {
 
 		this.pessoasMesa++;
 
-		Thread.sleep(1300);
-
 		System.out.println("O aluno " + pessoa + " entrou na mesa, existe " + String.valueOf(pessoasBebendo)
 				+ " alunos remediados e " + String.valueOf(pessoasMesa) + " alunos na mesa.");
 
@@ -45,10 +40,8 @@ public class Auri {
 
 		this.pessoasBebendo++;
 
-		Thread.sleep(1300);
 		System.out.println("O aluno " + pessoa + " Está bebendo...");
 
-		Thread.sleep(1300);
 		System.out.println("O aluno " + pessoa + " Está remediado, existe " + String.valueOf(pessoasBebendo)
 				+ " alunos remediados e " + String.valueOf(pessoasMesa) + " alunos na mesa.");
 
@@ -66,7 +59,6 @@ public class Auri {
 
 		while (!podeSair()) {
 
-			Thread.sleep(1300);
 			System.out.println("O aluno " + pessoa + " não conseguiu sair da mesa");
 
 			wait();
@@ -74,8 +66,6 @@ public class Auri {
 
 		this.pessoasMesa--;
 		this.pessoasBebendo--;
-
-		Thread.sleep(1300);
 
 		System.out.println("O aluno " + pessoa + " saiu da mesa.");
 		System.out.println("Existe " + String.valueOf(pessoasBebendo) + " remediadas e " + String.valueOf(pessoasMesa)

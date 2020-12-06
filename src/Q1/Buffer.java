@@ -8,9 +8,6 @@ package Q1;
  * 
  * A variavel c foi iniciada com -1, porque com essa informação, a Thread Carro vai
  * saber que o carro ainda não foi carregado.
- * 
- * Os sleeps foram colocados apenas para vizualizar os prints, não tendo impacto
- * no andamento das threads.
  */
 public class Buffer {
 
@@ -43,9 +40,7 @@ public class Buffer {
 		this.carregar = true;
 		this.descarregar = false;
 
-		Thread.sleep(1000);
 		System.out.println("O carro está parado e pronto para carregar");
-		Thread.sleep(1000);
 
 		notifyAll();
 	}
@@ -67,7 +62,6 @@ public class Buffer {
 		this.passageirosEmbarcado++;
 
 		System.out.println("O passageiro " + nome + " embarcou.");
-		Thread.sleep(1000);
 
 		notifyAll();
 	}
@@ -87,7 +81,6 @@ public class Buffer {
 		this.carregar = false;
 
 		System.out.println("O carro está correndo, aperte os cintos");
-		Thread.sleep(5000);
 
 	}
 
@@ -102,7 +95,6 @@ public class Buffer {
 		}
 
 		System.out.println("O carro parou e está pronto para descarregar");
-		Thread.sleep(2000);
 
 		this.descarregar = true;
 		
@@ -129,7 +121,6 @@ public class Buffer {
 		this.passageirosEmbarcado--;
 
 		System.out.println("O passageiro " + nome + " desembarcou.");
-		Thread.sleep(1000);
 
 		if (isEmpty()) {
 			this.c = -1;
